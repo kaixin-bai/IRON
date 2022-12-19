@@ -18,12 +18,17 @@ git clone https://github.com/Kai-46/iron.git && cd iron && . ./create_env.sh
 
 ```shell
 . ./download_data.sh
+mkdir data_flashlight
+# 更改数据集文件夹名字为Luan_et_al_2021
+cp -r Luan_et_al_2021 ./data_flashlight
 ```
 
 ### Training and testing
 
 ```shell
-. ./train_scene.sh drv/dragon
+# . ./train_scene.sh drv/dragon
+# 删除train_scene.sh里面所有的data_flashlight
+python3 render_volume.py --mode train --conf ./confs/womask_iron.conf --case  Luan_et_al_2021/xmen
 ```
 
 Once training is done, you will see the recovered mesh and materials under the folder ```./exp_iron_stage2/drv/dragon/mesh_and_materials_50000/```. At the same time, the rendered test images are under the folder ``````./exp_iron_stage2/drv/dragon/render_test_50000/``````
